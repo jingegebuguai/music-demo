@@ -5,8 +5,9 @@
     //- keep-alive
     //-   router-view(v-if="$route.meta.keepAlive")
     //- player
-    router-view
-    m-nav.nav
+    keep-alive
+      router-view
+    m-nav.nav(:navs="nav_list" :class="choiceClass" position="bottom")
 </template>
 
 <script>
@@ -18,7 +19,14 @@ import Player from 'cpnts/player/player'
 export default {
   data () {
     return {
-      stop: false
+      stop: false,
+      nav_list: [
+        {'to': 'index', 'tag': 'div', 'icon': '#icon-shouye', 'title': '发现'},
+        {'to': 'vedio', 'tag': 'div', 'icon': '#icon-shipin', 'title': '视频'},
+        {'to': 'music', 'tag': 'div', 'icon': '#icon-yinle', 'title': '音乐'},
+        {'to': 'friend', 'tag': 'div', 'icon': '#icon-pengyou', 'title': '朋友'},
+        {'to': 'account', 'tag': 'div', 'icon': '#icon-zhanghao', 'title': '账号'}
+      ]
     }
   },
   mounted () {
@@ -40,6 +48,11 @@ export default {
       m.removeEventListener('touchend', this.firstPlay)
     }
   },
+  computed: {
+    choiceClass () {
+      return {middle: false, bottom: true}
+    }
+  },
   components: {
     MHeader,
     MNav,
@@ -57,6 +70,7 @@ export default {
   height: 100%;
   width: 100%;
   overflow: hidden;
+  margin-bottom: 60px;
 }
 .nav {
     // position: fixed;

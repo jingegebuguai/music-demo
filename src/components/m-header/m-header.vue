@@ -1,6 +1,7 @@
 <template lang="pug">
   .m-header
-    img.microphone(src="~/common/image/microphone.png")
+    svg.icon(aria-hidden="true")
+      use(xlink:href="#icon-huatong")
     router-link.search(to="search" tag="div")
       input.box(type="text" name="search" :placeholder="placeholder")
     img.musicState(src="~/common/image/music_state.png")
@@ -18,6 +19,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "~common/scss/variable.scss";
+@import "~common/scss/iconfont.scss";
 .m-header {
   position: fixed;
   height: 50px;
@@ -29,10 +31,12 @@ export default {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  img {
-    width: 35px;
-    height: 35px;
+  svg, img {
     margin: 5px 10px 5px 10px;
+  }
+  img {
+    width: 2em;
+    height: 2em;
   }
   .search {
     width: 100%;
@@ -45,7 +49,6 @@ export default {
     height: 20px;
   }
   input {
-    // font-family: 'iconfont';
     font-family:"iconfont" !important;
     text-align: center;
     background: $color-search-input;
@@ -55,9 +58,9 @@ export default {
     width: 100%;
     height: 35px;
     line-height: 20px;
-    // background: $color-search-input;
     color: $color-text-ll;
     outline-style: none;
   }
 }
+
 </style>

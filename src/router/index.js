@@ -11,11 +11,17 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-const Recommend = (resolve) => {
-  import('cpnts/recommend/recommend').then((module) => {
+const Index = (resolve) => {
+  import('cpnts/Index/index').then((module) => {
     resolve(module)
   })
 }
+
+// const Recommend = (resolve) => {
+//   import('cpnts/recommend/recommend').then((module) => {
+//     resolve(module)
+//   })
+// }
 
 const Singer = (resolve) => {
   import('cpnts/singer/singer').then((module) => {
@@ -62,13 +68,12 @@ const User = (resolve) => {
 export default new Router({
   routes: [
     {
-      // 默认跳转到 recommend
       path: '/',
-      redirect: '/recommend'
+      redirect: '/index'
     },
     {
-      path: '/recommend',
-      component: Recommend,
+      path: '/index',
+      component: Index,
       meta: {
         keepAlive: true
       },

@@ -1,26 +1,65 @@
 <template lang="pug">
-  .nav
-    router-link.rt(to="search" tag="div")
-      img(src="~/common/image/find.png")
-      span 发现
-    router-link.rt(to="vedio" tag="div")  
-      img.vedio(src="~/common/image/vedio.png")
-      span 视频
-    router-link.rt(to="self" tag="div")
-      img(src="~/common/image/music.png")
-      span 我的
-    router-link.rt(to="friend" tag="div")
-      img.friend(src="~/common/image/friend.png")
-      span 朋友
-    router-link.rt(to="account" tag="div")
-      img(src="~/common/image/acount.png")
-      span 账号
+  div(ref="nav")
+    router-link.rt(v-for="item, index in navs" :key="index" :to="item.to" :tag="item.tag")
+      svg.icon(aria-hidden="true"  @click.capture="icon_fill" :data-index="index")
+        use(:xlink:href="item.icon")
+      span {{item.title}}
 </template>
 
 <script>
 export default {
   data () {
     return {
+      pre_ele: ''
+    }
+  },
+  props: {
+    navs: {
+      type: Array,
+      required: true
+    },
+    position: {
+      type: String,
+      required: true
+    }
+  },
+  methods: {
+    icon_fill (event) {
+      let _this = this
+      if (this.position === 'bottom') {
+        new Promise(resolve => {
+          event = event || window.event
+          let obj = (event.srcElement ? event.srcElement : event.target)
+          if (!obj.hasAttribute('aria-hidden')) {
+            obj = obj.parentNode
+          }
+          if (_this.pre_ele !== obj) {
+            obj.style.width = 1.5 + 'em'
+            obj.style.height = 1.5 + 'em'
+            obj.style.padding = 0.25 + 'em'
+            obj.style.fill = 'white'
+            _this.pre_ele.style.fill = 'gray'
+            _this.pre_ele.style.padding = 0
+            _this.pre_ele.style.width = 2 + 'em'
+            _this.pre_ele.style.height = 2 + 'em'
+          }
+          resolve(obj)
+        }).then((obj) => {
+          _this.pre_ele = obj
+        })
+      }
+    }
+  },
+  mounted () {
+    if (this.position === 'bottom') {
+      this.$nextTick(() => {
+        let init = this.$refs.nav.getElementsByClassName('icon')[0]
+        init.style.width = 1.5 + 'em'
+        init.style.height = 1.5 + 'em'
+        init.style.padding = 0.25 + 'em'
+        init.style.fill = 'white'
+        this.pre_ele = init
+      })
     }
   }
 }
@@ -28,33 +67,51 @@ export default {
 
 <style lang="scss" scoped>
 @import "~common/scss/variable.scss";
-.nav {
-  position: fixed;
+@import "~common/scss/iconfont.scss";
+.bottom, .middle {
   z-index: 999;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  font-size: 12px;
   .rt {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 12px;
     font-weight: 200;
-    img {
-      width: 28px;
-      height: 28px;
-      padding: 2px;
-      margin: 2px 10px;
-    }
+  }
+}
+.bottom {
+  position: fixed;
+  svg {
+    margin: 2px 20px 5px;
+  }
+  span {
+      transform: scale(.8)
   }
   .router-link-active {
-      img {
-        background-color: $color-nav-icon;
-        border-radius: 15px;
-      }
-      color: $color-nav-icon; 
-  }  
+    svg {
+      background-color: $color-nav-icon;
+      border-radius: 15px;
+    }
+    color: $color-nav-icon;
+  }
 }
+.middle {
+  svg {
+    margin: 2px 10px 8px 10px;
+  }
+  .icon {
+    border-radius: 3.7em;
+    background: $color-nav-icon;
+    padding: 0.85em;
+    width: 2em;
+    height: 2em;
+    vertical-align: -0.15em;
+    fill:white;
+  }
+}
+
 </style>

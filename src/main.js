@@ -4,11 +4,13 @@ import router from './router'
 import store from './store'
 import fastclick from 'fastclick'
 import VueLazyload from 'vue-lazyload'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'swiper/dist/css/swiper.css'
 
 Vue.config.productionTip = false
-
-Vue.config.devtools = process.env.NODE_ENV === 'development'
-Vue.config.performance = process.env.NODE_ENV === 'development'
+Vue.config.devtools = true
+// Vue.config.devtools = process.env.NODE_ENV === 'development'
+// Vue.config.performance = process.env.NODE_ENV === 'development'
 
 const errorHandler = (err, vm, info) => {
   console.log('全局异常')
@@ -26,6 +28,8 @@ Vue.use(VueLazyload, {
   loading: require('common/image/default.png'),
   attempt: 3
 })
+
+Vue.use(VueAwesomeSwiper)
 
 fastclick.attach(document.body)
 
