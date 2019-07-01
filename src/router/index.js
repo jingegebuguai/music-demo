@@ -12,7 +12,13 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 const Index = (resolve) => {
-  import('cpnts/Index/index').then((module) => {
+  import('cpnts/index/index').then((module) => {
+    resolve(module)
+  })
+}
+
+const IndexLists = (resolve) => {
+  import('cpnts/index/index-lists').then((module) => {
     resolve(module)
   })
 }
@@ -22,7 +28,6 @@ const Index = (resolve) => {
 //     resolve(module)
 //   })
 // }
-
 const Singer = (resolve) => {
   import('cpnts/singer/singer').then((module) => {
     resolve(module)
@@ -69,18 +74,12 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/index'
-    },
-    {
-      path: '/index',
       component: Index,
-      meta: {
-        keepAlive: true
-      },
+      redirect: '/index',
       children: [
         {
-          path: ':id',
-          component: MusicList,
+          path: '/index',
+          component: IndexLists,
           meta: {
             keepAlive: true
           }

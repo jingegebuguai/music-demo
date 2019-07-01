@@ -2,11 +2,10 @@
   #app
     //- m-header
     //- tab
-    //- keep-alive
-    //-   router-view(v-if="$route.meta.keepAlive")
-    //- player
     keep-alive
-      router-view
+      router-view(v-if="$route.meta.keepAlive")
+    //- player
+    //- router-view
     m-nav.nav(:navs="nav_list" :class="choiceClass" position="bottom")
 </template>
 

@@ -4,15 +4,17 @@
     swiper.swiper-container
     m-nav.nav-container(:navs="nav_list" :class="choiceClass" position="middle")
     .line
-    index-list.recommends-container(tag="recommend")
-    index-list.disc-container(tag="disc")
+    keep-alive
+      router-view(v-if="$route.meta.keepAlive")
+    //- index-list.recommends-container(tag="recommend")
+    //- index-list.disc-container(tag="disc")
 </template>
 
 <script>
 import MHeader from 'cpnts/m-header/m-header'
 import Swiper from 'cpnts/util/swiper'
 import MNav from 'cpnts/m-nav/m-nav'
-import IndexList from 'cpnts/index/index-list'
+// import IndexList from 'cpnts/index/index-lists'
 export default {
   data () {
     return {
@@ -34,7 +36,7 @@ export default {
     MHeader,
     Swiper,
     MNav,
-    IndexList
+    //IndexLists
   }
 }
 </script>
