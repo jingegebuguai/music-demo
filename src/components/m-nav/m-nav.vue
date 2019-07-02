@@ -24,6 +24,7 @@ export default {
     }
   },
   methods: {
+    //点击到字体会出bug，需要解决
     icon_fill (event) {
       let _this = this
       if (this.position === 'bottom') {

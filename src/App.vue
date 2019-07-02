@@ -3,7 +3,7 @@
     //- m-header
     //- tab
     keep-alive
-      router-view(v-if="$route.meta.keepAlive")
+      router-view
     //- player
     //- router-view
     m-nav.nav(:navs="nav_list" :class="choiceClass" position="bottom")
@@ -64,6 +64,7 @@ export default {
 <style lang="scss">
 @import 'common/scss/index.scss';
 #app {
+  background: white;
   position: relative;
   top: 0;
   height: 100%;

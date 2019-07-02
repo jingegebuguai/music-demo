@@ -1,8 +1,9 @@
 <template lang="pug">
   .m-header
     svg.icon(aria-hidden="true")
-      use(xlink:href="#icon-huatong")
-    router-link.search(to="search" tag="div")
+      use(xlink:href="#icon-huatong" v-if="flag==='index'")
+      use(xlink:href="#icon-saoma" v-if="flag==='account'")
+    router-link.search(to="search" tag="div" v-if="flag==='index'")
       input.box(type="text" name="search" :placeholder="placeholder")
     img.musicState(src="~/common/image/music_state.png")
 </template>
@@ -12,6 +13,12 @@ export default {
   data () {
     return {
       placeholder: '\ue613 云村'
+    }
+  },
+  props: {
+    flag: {
+      type: String,
+      required: true
     }
   }
 }
@@ -25,7 +32,7 @@ export default {
   height: 50px;
   width: 100%;
   text-align: center;
-  background: $color-theme;
+  background: white;
   box-sizing: border-box;
   display: flex;
   flex-direction: row;

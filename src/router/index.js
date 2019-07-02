@@ -23,6 +23,12 @@ const IndexLists = (resolve) => {
   })
 }
 
+const Account = (resolve) => {
+  import('cpnts/account/account').then((module) => {
+    resolve(module)
+  })
+}
+
 // const Recommend = (resolve) => {
 //   import('cpnts/recommend/recommend').then((module) => {
 //     resolve(module)
@@ -85,6 +91,10 @@ export default new Router({
           }
         }
       ]
+    },
+    {
+      path: '/account',
+      component: Account
     },
     {
       path: '/singer',

@@ -1,11 +1,11 @@
 <template lang="pug">
   .index
-    m-header.header-container
+    m-header.header-container(flag="index")
     swiper.swiper-container
     m-nav.nav-container(:navs="nav_list" :class="choiceClass" position="middle")
     .line
     keep-alive
-      router-view(v-if="$route.meta.keepAlive")
+      router-view.recommends-container.disc-container(v-if="$route.meta.keepAlive")
     //- index-list.recommends-container(tag="recommend")
     //- index-list.disc-container(tag="disc")
 </template>
