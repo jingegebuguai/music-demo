@@ -5,6 +5,7 @@ import store from './store'
 import fastclick from 'fastclick'
 import VueLazyload from 'vue-lazyload'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'lib-flexible/flexible.js'
 import 'swiper/dist/css/swiper.css'
 
 Vue.config.productionTip = false

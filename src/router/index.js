@@ -17,8 +17,8 @@ const Index = (resolve) => {
   })
 }
 
-const IndexLists = (resolve) => {
-  import('cpnts/index/index-lists').then((module) => {
+const RecommendAndDisc = (resolve) => {
+  import('cpnts/index/recommendAndDisc').then((module) => {
     resolve(module)
   })
 }
@@ -85,7 +85,7 @@ export default new Router({
       children: [
         {
           path: '/index',
-          component: IndexLists,
+          component: RecommendAndDisc,
           meta: {
             keepAlive: true
           }

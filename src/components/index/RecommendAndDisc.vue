@@ -1,19 +1,18 @@
 <template lang="pug">
   .index
-      index-list.recommends-container(tag="recommend")
-      index-list.disc-container(tag="disc")
+      recommend-disc.recommends-container(tag="recommend")
+      recommend-disc.disc-container(tag="disc")
 </template>
 
 <script>
-import IndexList from 'cpnts/index/index-list'
+import RecommendDisc from 'cpnts/index/recommend-disc'
 export default {
   data () {
     return {
-      
     }
   },
   components: {
-    IndexList
+    RecommendDisc
   }
 }
 </script>

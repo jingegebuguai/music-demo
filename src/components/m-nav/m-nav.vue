@@ -75,7 +75,7 @@ export default {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  font-size: 12px;
+  font-size: 24px;
   .rt {
     display: flex;
     flex-direction: column;
@@ -87,7 +87,7 @@ export default {
 .bottom {
   position: fixed;
   svg {
-    margin: 2px 20px 5px;
+    margin: 4px 40px 10px;
   }
   span {
       transform: scale(.8)
@@ -95,14 +95,14 @@ export default {
   .router-link-active {
     svg {
       background-color: $color-nav-icon;
-      border-radius: 15px;
+      border-radius: 30px;
     }
     color: $color-nav-icon;
   }
 }
 .middle {
   svg {
-    margin: 2px 10px 8px 10px;
+    margin: 4px 20px 16px 20px;
   }
   .icon {
     border-radius: 3.7em;

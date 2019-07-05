@@ -6,15 +6,12 @@
     .line
     keep-alive
       router-view.recommends-container.disc-container(v-if="$route.meta.keepAlive")
-    //- index-list.recommends-container(tag="recommend")
-    //- index-list.disc-container(tag="disc")
 </template>
 
 <script>
 import MHeader from 'cpnts/m-header/m-header'
 import Swiper from 'cpnts/util/swiper'
 import MNav from 'cpnts/m-nav/m-nav'
-// import IndexList from 'cpnts/index/index-lists'
 export default {
   data () {
     return {
@@ -35,8 +32,7 @@ export default {
   components: {
     MHeader,
     Swiper,
-    MNav,
-    //IndexLists
+    MNav
   }
 }
 </script>
@@ -69,8 +65,6 @@ export default {
     transform: scaleY(0.5);
     background: $color-line;
     transform-origin: 50% 100%;
-    // background: linear-gradient(0deg, #fff, #000);
-    // box-shadow: 0 0.5px 0 #000;
   }
   .recommends-container, .disc-container {
     position: relative;
