@@ -23,7 +23,7 @@ export default {
     position: relative;
     z-index: 1;
     width: 95%;
-    margin: 16px 2.5% 0 2.5%;
+    margin: 32px 2.5% 0 2.5%;
 }
 
 </style>

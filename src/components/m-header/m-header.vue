@@ -29,7 +29,7 @@ export default {
 @import "~common/scss/iconfont.scss";
 .m-header {
   position: fixed;
-  height: 50px;
+  height: 100px;
   width: 100%;
   text-align: center;
   background: white;
@@ -39,7 +39,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   svg, img {
-    margin: 5px 10px 5px 10px;
+    margin: 10px 20px 10px 20px;
   }
   img {
     width: 2em;
@@ -51,20 +51,20 @@ export default {
   .search-icon {
     position: absolute;
     top: 20%;
-    left: 55px;
-    width: 20px;
-    height: 20px;
+    left: 110px;
+    width: 40px;
+    height: 40px;
   }
   input {
     font-family:"iconfont" !important;
     text-align: center;
     background: $color-search-input;
-    font-size: 15px;
+    font-size: 30px;
     font-weight: 200;
-    border-radius: 20px;
+    border-radius: 40px;
     width: 100%;
-    height: 35px;
-    line-height: 20px;
+    height: 70px;
+    line-height: 40px;
     color: $color-text-ll;
     outline-style: none;
   }

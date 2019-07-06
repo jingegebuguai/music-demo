@@ -51,17 +51,17 @@ export default {
   }
   .swiper-container {
     width: 95%;
-    height: 135px;
-    margin-top: 60px;
-    border-radius: 8px;
+    height: 270px;
+    margin-top: 120px;
+    border-radius: 16px;
   }
   .nav-container {
     width: 100%;
-    height: 100px;
+    height: 200px;
   }
   .line {
     width: 100%;
-    height: 1px;
+    height: 2px;
     transform: scaleY(0.5);
     background: $color-line;
     transform-origin: 50% 100%;
@@ -70,7 +70,7 @@ export default {
     position: relative;
     z-index: 1;
     width: 95%;
-    margin: 16px 2.5% 0 2.5%;
+    margin: 0 2.5% 0 2.5%;
   }
 }
 </style>

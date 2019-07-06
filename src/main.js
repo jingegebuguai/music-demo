@@ -34,6 +34,20 @@ Vue.use(VueAwesomeSwiper)
 
 fastclick.attach(document.body)
 
+router.beforeEach((to, from, next) => {
+  let getStatus = localStorage.getItem('status')
+  if (getStatus === 'login') {
+    store.state.isLogin = true
+    next()
+  } else if (to.path === '/index' && store.state.isLogin === false) {
+    next({
+      path: '/login'
+    })
+  } else {
+    next()
+  }
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

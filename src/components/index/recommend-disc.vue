@@ -15,7 +15,7 @@
           svg.icon(aria-hidden="true")
             use(xlink:href="#icon-bofang1")
           span {{item.playCount}}
-        img(v-lazy="item.picUrl")
+        img(v-lazy="item.picUrl + '?param=140y140&type=webp'")
         .list-intro
           p {{item.name}}
 </template>
@@ -86,7 +86,7 @@ export default {
 @import "~common/scss/variable.scss";
 @import "~common/scss/iconfont.scss";
 .index-list {
-  font-size: 12px;
+  font-size: 24px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -101,9 +101,9 @@ export default {
     flex-wrap: wrap;
   }
   .index-list-nav {
-    margin-bottom: 16px;
+    margin-bottom: 32px;
     .entity {
-      font-size: 16px;
+      font-size: 32px;
       font-weight: bold;
     }
     .choice {
@@ -113,17 +113,17 @@ export default {
       align-items: center;
       justify-content: space-between;
       .line {
-        width: 1px;
-        height: 16px;
+        width: 2px;
+        height: 32px;
         transform: scaleX(0.5);
         background: $color-line;
         transform-origin: 50% 100%;
       }
     }
     .right-nav {
-      padding: 2.5px 8px;
-      border: 1px solid rgb(182, 180, 180);
-      border-radius: 9.5px;
+      padding: 5px 16px;
+      border: 2px solid rgb(182, 180, 180);
+      border-radius: 19px;
     }
   }
   .index-list-detail {
@@ -137,13 +137,13 @@ export default {
       font-weight: 100;
       .paly-num {
         position: absolute;
-        top: 3px;
-        right: 5px;
+        top: 6px;
+        right: 10px;
         z-index: 9;
         .icon {
           width: 1em;
           height: 1em;
-          margin-right: 3px;
+          margin-right: 6px;
           fill: white;
         }
         span {
@@ -152,6 +152,7 @@ export default {
       }
       img {
         width: 100%;
+        border-radius: 8px;
       }
       img:after {
         content: '';
@@ -159,11 +160,10 @@ export default {
         padding-top: 100%;
       }
       .list-intro {
-        margin-top: 8px;
+        margin-top: 16px;
         height: 2.4em;
         text-align: left;
         p {
-          // 实现多行省略号
           line-height: 1.2em;
           overflow:hidden;
           display: -webkit-box;

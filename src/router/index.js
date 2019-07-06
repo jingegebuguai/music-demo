@@ -1,13 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import Singer from 'cpnts/singer/singer'
-// import Recommend from 'cpnts/recommend/recommend'
-// import Rank from 'cpnts/rank/rank'
-// import Search from 'cpnts/search/search'
-// import MusicList from 'cpnts/music-list/music-list'
-// import SingerDetail from 'cpnts/singer-detail/singer-detail'
-// import RankDetail from 'cpnts/rank-detail/rank-detail'
-// import User from 'cpnts/user/user'
 
 Vue.use(Router)
 
@@ -19,6 +11,12 @@ const Index = (resolve) => {
 
 const RecommendAndDisc = (resolve) => {
   import('cpnts/index/recommendAndDisc').then((module) => {
+    resolve(module)
+  })
+}
+
+const Login = (resolve) => {
+  import('cpnts/login/login').then((module) => {
     resolve(module)
   })
 }
@@ -76,7 +74,7 @@ const User = (resolve) => {
   })
 }
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
@@ -91,6 +89,10 @@ export default new Router({
           }
         }
       ]
+    },
+    {
+      path: '/login',
+      component: Login
     },
     {
       path: '/account',
@@ -142,3 +144,5 @@ export default new Router({
     }
   ]
 })
+
+export default router

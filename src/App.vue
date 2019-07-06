@@ -6,7 +6,7 @@
       router-view
     //- player
     //- router-view
-    m-nav.nav(:navs="nav_list" :class="choiceClass" position="bottom")
+    m-nav.nav(v-if="isNav === true" :navs="nav_list" :class="choiceClass" position="bottom")
 </template>
 
 <script>
@@ -14,6 +14,8 @@ import MHeader from 'cpnts/m-header/m-header'
 import MNav from 'cpnts/m-nav/m-nav'
 import Tab from 'cpnts/tab/tab'
 import Player from 'cpnts/player/player'
+
+import { mapGetters } from 'vuex'
 
 export default {
   data () {
@@ -50,7 +52,10 @@ export default {
   computed: {
     choiceClass () {
       return {middle: false, bottom: true}
-    }
+    },
+    ...mapGetters([
+      'isNav'
+    ])
   },
   components: {
     MHeader,
@@ -70,14 +75,14 @@ export default {
   height: 100%;
   width: 100%;
   overflow: hidden;
-  margin-bottom: 60px;
+  margin-bottom: 100px;
 }
 .nav {
     // position: fixed;
     // z-index: 999;
     bottom: 0;
     width: 100%;
-    height: 120px;
+    height: 100px;
     background: $color-theme;
   }
 </style>
