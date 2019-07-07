@@ -2,8 +2,9 @@
   #app
     //- m-header
     //- tab
-    keep-alive
-      router-view
+    transition(:name="transitionName")
+      keep-alive
+        router-view
     //- player
     //- router-view
     m-nav.nav(v-if="isNav === true" :navs="nav_list" :class="choiceClass" position="bottom")
@@ -21,6 +22,7 @@ export default {
   data () {
     return {
       stop: false,
+      transitionName: '',
       nav_list: [
         {'to': 'index', 'tag': 'div', 'icon': '#icon-shouye', 'title': '发现'},
         {'to': 'vedio', 'tag': 'div', 'icon': '#icon-shipin', 'title': '视频'},
@@ -31,23 +33,26 @@ export default {
     }
   },
   mounted () {
-    let m = document.querySelector('#app')
-    m.addEventListener('touchend', this.firstPlay)
+    // let m = document.querySelector('#app')
+    // m.addEventListener('touchend', this.firstPlay)
   },
   methods: {
-    firstPlay () {
-      let music = document.querySelector('#music-audio')
-      music.play()
-      if (music.src !== '') {
-        this.stop = true
-      }
-    }
+    // firstPlay () {
+    //   let music = document.querySelector('#music-audio')
+    //   music.play()
+    //   if (music.src !== '') {
+    //     this.stop = true
+    //   }
+    // }
   },
   watch: {
-    stop () {
-      let m = document.querySelector('#app')
-      m.removeEventListener('touchend', this.firstPlay)
+    $route (to, from) {
+      this.transitionName = to.meta.index > from.meta.index ? 'slide-left' : 'slide-right'
     }
+    // stop () {
+    //   let m = document.querySelector('#app')
+    //   m.removeEventListener('touchend', this.firstPlay)
+    // }
   },
   computed: {
     choiceClass () {
@@ -85,4 +90,28 @@ export default {
     height: 100px;
     background: $color-theme;
   }
+.slide-right-enter-active,
+.slide-right-leave-active,
+.slide-left-enter-active,
+.slide-left-leave-active {
+  will-change: transform;
+  transition: all 500ms;
+  position: absolute;
+}
+.slide-right-enter {
+  opacity: 0;
+  transform: translate3d(-100%, 0, 0);
+}
+.slide-right-leave-active {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+}
+.slide-left-enter {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+}
+.slide-left-leave-active {
+  opacity: 0;
+  transform: translate3d(-100%, 0, 0);
+}
 </style>

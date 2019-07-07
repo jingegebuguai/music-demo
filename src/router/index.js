@@ -21,6 +21,12 @@ const Login = (resolve) => {
   })
 }
 
+const LoginForm = (resolve) => {
+  import('cpnts/login/login-form').then((module) => {
+    resolve(module)
+  })
+}
+
 const Account = (resolve) => {
   import('cpnts/account/account').then((module) => {
     resolve(module)
@@ -92,7 +98,17 @@ const router = new Router({
     },
     {
       path: '/login',
-      component: Login
+      component: Login,
+      meta: {
+        index: 0
+      }
+    },
+    {
+      path: '/login-form',
+      component: LoginForm,
+      meta: {
+        index: 1
+      }
     },
     {
       path: '/account',
