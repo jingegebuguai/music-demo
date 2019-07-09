@@ -6,7 +6,7 @@ const mutations = {
   [types.SET_NAV_STATUS] (state, status) {
     state.isNav = status
   }
-  
+
 //   [types.SET_MUSIC_LIST] (state, musicList) {
 //     state.musicList = musicList
 //   },

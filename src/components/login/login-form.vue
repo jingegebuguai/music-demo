@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import { httpGet } from 'api/axios.js'
 export default {
   data () {
     return {
@@ -29,7 +30,10 @@ export default {
   },
   methods: {
     submit () {
-      pass
+      console.log(this.phone, this.password)
+      httpGet({url: '/login/cellphone?phone=' + this.phone + '&password=' + this.password}).then(res => {
+        console.log('res', res)
+      })
     },
     goback () {
       this.$router.go(-1)
@@ -41,9 +45,15 @@ export default {
       this.password = ''
     }
   },
+  computed () {
+    login_info
+  },
   watch: {
     phone (val) {
       this.cancel_phone = val !== ''
+      // if (this.password !== '') {
+      //   console.log(document.getElementsByTagName('button'))
+      // }
     },
     password (val) {
       this.cancel_pass = val !== ''
