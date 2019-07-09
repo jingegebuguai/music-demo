@@ -15,25 +15,43 @@
           use(xlink:href="#icon-quxiao")
       button(@click="submit") 登陆
       span 重设密码 >
+    .err-msg(v-if="msg.length != 0")
+      span {{msg}}
 </template>
 
 <script>
 import { httpGet } from 'api/axios.js'
+import { mapActions } from 'vuex'
 export default {
   data () {
     return {
       phone: '',
       password: '',
       cancel_phone: false,
-      cancel_pass: false
+      cancel_pass: false,
+      msg: ''
     }
   },
   methods: {
     submit () {
-      console.log(this.phone, this.password)
-      httpGet({url: '/login/cellphone?phone=' + this.phone + '&password=' + this.password}).then(res => {
-        console.log('res', res)
-      })
+      let pattern = /(13\d|14[579]|15[^4\D]|17[^49\D]|18\d)\d{8}/g
+      if (!pattern.test(this.phone)) {
+        this.msg = '手机号应是11位数字'
+      } else {
+        httpGet({url: '/login/cellphone?phone=' + this.phone + '&password=' + this.password}).then(res => {
+          this.$store.dispatch('loginStatus', true)
+          localStorage.setItem('status', 'login')
+          this.$router.push('/index')
+        }).catch(err => {
+          if (err) {
+            this.msg = '账号或密码错误'
+          }
+        })
+      }
+      let _this = this
+      setTimeout(function () {
+        _this.msg = ''
+      }, 2000)
     },
     goback () {
       this.$router.go(-1)
@@ -43,20 +61,34 @@ export default {
     },
     del_password () {
       this.password = ''
-    }
+    },
+    ...mapActions(['loginStatus'])
   },
-  computed () {
-    login_info
+  computed: {
+    login_info () {
+      const { phone, password } = this
+      return {
+        phone,
+        password
+      }
+    }
   },
   watch: {
     phone (val) {
       this.cancel_phone = val !== ''
-      // if (this.password !== '') {
-      //   console.log(document.getElementsByTagName('button'))
-      // }
     },
     password (val) {
       this.cancel_pass = val !== ''
+    },
+    login_info: {
+      handler: function (newval, oldval) {
+        let buttonStyle = document.getElementsByTagName('button')[0].style
+        if (newval.phone !== '' && newval.password !== '') {
+          buttonStyle.background = 'rgb(248, 88, 88)'
+        } else {
+          buttonStyle.background = 'rgb(253, 197, 197)'
+        }
+      }
     }
   }
 }
@@ -135,13 +167,18 @@ export default {
       font-size: 0.8em;
       color: gray;
     }
-    // input:focus{
-    //   border-color: #66afe9;
-    //   outline: 0;
-    //   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
-    //   box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
-    // }
-
+  }
+  .err-msg {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-45%, -50%);
+    span {
+      padding: 36px;
+      background: rgb(44, 44, 44);
+      color: white;
+      border-radius: 8px;
+    }
   }
 }
 </style>

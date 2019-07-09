@@ -12,6 +12,7 @@
 import MHeader from 'cpnts/m-header/m-header'
 import Swiper from 'cpnts/util/swiper'
 import MNav from 'cpnts/m-nav/m-nav'
+import { mapActions } from 'vuex'
 export default {
   data () {
     return {
@@ -28,6 +29,12 @@ export default {
     choiceClass () {
       return {middle: true, bottom: false}
     }
+  },
+  mounted () {
+    this.$store.dispatch('navStatus', true)
+  },
+  methods: {
+    ...mapActions(['navStatus'])
   },
   components: {
     MHeader,
