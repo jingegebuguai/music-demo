@@ -1,6 +1,6 @@
 <template lang="pug">
   div(ref="nav")
-    router-link.rt(v-for="item, index in navs" :key="index" :to="item.to" :tag="item.tag")
+    router-link.rt(v-for="item, index in navs" :key="index" :class="item.class" :to="item.to" :tag="item.tag" active-class="active")
       svg.icon(aria-hidden="true"  @click.capture="icon_fill" :data-index="index")
         use(:xlink:href="item.icon")
       span {{item.title}}
@@ -92,7 +92,7 @@ export default {
   span {
       transform: scale(.8)
   }
-  .router-link-active {
+  .active {
     svg {
       background-color: $color-nav-icon;
       border-radius: 30px;

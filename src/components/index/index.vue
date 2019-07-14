@@ -17,7 +17,7 @@ export default {
   data () {
     return {
       nav_list: [
-        {'to': '', 'tag': 'div', 'icon': '#icon-rili', 'title': '每日推荐'},
+        {'to': 'song', 'tag': 'div', 'icon': '#icon-rili', 'title': '每日推荐'},
         {'to': '', 'tag': 'div', 'icon': '#icon-icon--', 'title': '歌单'},
         {'to': '', 'tag': 'div', 'icon': '#icon-paixingbang', 'title': '排行榜'},
         {'to': '', 'tag': 'div', 'icon': '#icon-yinlemusic170', 'title': '电台'},
@@ -53,6 +53,7 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  position: relative;
   .header-container {
     z-index: 999;
   }

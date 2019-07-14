@@ -24,11 +24,11 @@ export default {
       stop: false,
       transitionName: '',
       nav_list: [
-        {'to': 'index', 'tag': 'div', 'icon': '#icon-shouye', 'title': '发现'},
-        {'to': 'vedio', 'tag': 'div', 'icon': '#icon-shipin', 'title': '视频'},
-        {'to': 'music', 'tag': 'div', 'icon': '#icon-yinle', 'title': '音乐'},
-        {'to': 'friend', 'tag': 'div', 'icon': '#icon-pengyou', 'title': '朋友'},
-        {'to': 'account', 'tag': 'div', 'icon': '#icon-zhanghao', 'title': '账号'}
+        {'to': 'index', 'tag': 'div', 'icon': '#icon-shouye', 'title': '发现', 'class': 'index'},
+        {'to': 'vedio', 'tag': 'div', 'icon': '#icon-shipin', 'title': '视频', 'class': 'vedio'},
+        {'to': 'music', 'tag': 'div', 'icon': '#icon-yinle', 'title': '音乐', 'class': 'music'},
+        {'to': 'friend', 'tag': 'div', 'icon': '#icon-pengyou', 'title': '朋友', 'class': 'friend'},
+        {'to': 'account', 'tag': 'div', 'icon': '#icon-zhanghao', 'title': '账号', 'class': 'account'}
       ]
     }
   },

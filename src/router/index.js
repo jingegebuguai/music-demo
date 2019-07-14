@@ -33,6 +33,12 @@ const Account = (resolve) => {
   })
 }
 
+const Song = (resolve) => {
+  import('cpnts/recommend/song').then((module) => {
+    resolve(module)
+  })
+}
+
 // const Recommend = (resolve) => {
 //   import('cpnts/recommend/recommend').then((module) => {
 //     resolve(module)
@@ -81,6 +87,8 @@ const User = (resolve) => {
 }
 
 const router = new Router({
+  // linkActiveClass: 'active',
+  linkExactActiveClass: 'active',
   routes: [
     {
       path: '/',
@@ -91,7 +99,8 @@ const router = new Router({
           path: '/index',
           component: RecommendAndDisc,
           meta: {
-            keepAlive: true
+            keepAlive: true,
+            index: 0
           }
         }
       ]
@@ -113,6 +122,13 @@ const router = new Router({
     {
       path: '/account',
       component: Account
+    },
+    {
+      path: '/song',
+      component: Song,
+      meta: {
+        index: 1
+      }
     },
     {
       path: '/singer',
